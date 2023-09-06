@@ -1,31 +1,33 @@
 package com.study.web.board.entity;
 
-import com.study.web.category.entity.Category;
+import java.time.LocalDateTime;
 
 public class Board {
 
     private Long boardId;
-    private String category_name;
+    private String categoryName;
     private String writer;
     private String title;
     private String content;
     private int count;
     private String boardPw;
-    private String createdAt;
-    private String modifiedAt;
+    private String boardRePw;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 
     public Board() {
 
     }
 
-    public Board(Long boardId, String category_name, String writer, String title, String content, int count, String boardPw, String createdAt, String modifiedAt) {
+    public Board(Long boardId, String categoryName, String writer, String title, String content, int count, String boardPw, String boardRePw, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.boardId = boardId;
-        this.category_name = category_name;
+        this.categoryName = categoryName;
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.count = count;
         this.boardPw = boardPw;
+        this.boardRePw = boardRePw;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
     }
@@ -35,6 +37,13 @@ public class Board {
     }
     public void setBoardId(Long boardId) {
         this.boardId = boardId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getWriter() {
@@ -72,37 +81,38 @@ public class Board {
         this.boardPw = boardPw;
     }
 
-    public String getCreatedAt() {
+    public String getBoardRePw() {
+        return boardRePw;
+    }
+    public void setBoardRePw(String boardRePw) {
+        this.boardRePw = boardRePw;
+    }
+
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getModifiedAt() {
+    public LocalDateTime getModifiedAt() {
         return modifiedAt;
     }
-    public void setModifiedAt(String modifiedAt) {
+    public void setModifiedAt(LocalDateTime modifiedAt) {
         this.modifiedAt = modifiedAt;
-    }
-
-    public String getCategory_name() {
-        return category_name;
-    }
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
     }
 
     @Override
     public String toString() {
         return "Board{" +
                 "boardId=" + boardId +
-                ", category_name='" + category_name + '\'' +
+                ", categoryName='" + categoryName + '\'' +
                 ", writer='" + writer + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", count=" + count +
                 ", boardPw='" + boardPw + '\'' +
+                ", boardRePw='" + boardRePw + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", modifiedAt='" + modifiedAt + '\'' +
                 '}';

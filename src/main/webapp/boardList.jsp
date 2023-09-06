@@ -2,10 +2,14 @@
 <%@ page import="com.study.web.board.entity.Board" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.time.ZoneId" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSP - Hello World</title>
+  <title>boardList.jsp</title>
 </head>
 <body>
   <h1><%= "게시판 목록" %></h1>
@@ -44,12 +48,12 @@
             for (Board board : boardList) {
           %>
             <tr>
-                <td><%= board.getCategory_name() %></td>
+                <td><%= board.getCategoryName() %></td>
                 <td><a href="boardDetail.jsp?boardId=<%= board.getBoardId() %>"><%= board.getTitle() %></a></td>
                 <td><%= board.getWriter() %></td>
                 <td><%= board.getCount() %></td>
-                <td><%= board.getCreatedAt().substring(0, 11) + board.getCreatedAt().substring(11, 13) + "시 " + board.getCreatedAt().substring(14, 16) + "분" %></td>
-                <td><%= board.getModifiedAt().substring(0, 11) + board.getModifiedAt().substring(11, 13) + "시 " + board.getModifiedAt().substring(14, 16) + "분" %></td>
+                <td><%= board.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")) %></td>
+                <td><%= board.getModifiedAt().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")) %></td>
             </tr>
           <%
             }
