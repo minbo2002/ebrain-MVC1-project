@@ -4,9 +4,10 @@ import com.study.connection.ConnectionTest;
 import com.study.connection.JdbcUtil;
 import com.study.web.board.entity.Board;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -118,24 +119,25 @@ public class BoardDao extends ConnectionTest {
     }
 
     // 카테고리  작성자  제목  내용  조회수  비밀번호  작성일  수정일
-    public int write(String categoryName, String writer, String title, String content, int count, String boardPw, String boardRePw, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public int write(Long categoryId, String writer, String title, String content, int count, String boardPw, String boardRePw, String createdAt, String modifiedAt) {
 
-        String SQL = "INSERT INTO board VALUES(?, ?, ?, ?, ?, ?, ?, LocalDateTime.now(), LocalDateTime.now())";
+        String SQL = "INSERT INTO board(category_id, writer, title, content, count, board_pw, board_repw, created_at, modified_at) " +
+                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn.setAutoCommit(false);
 
             PreparedStatement pstmt = conn.prepareStatement(SQL);
 
-            pstmt.setString(1, categoryName);
+            pstmt.setLong(1, categoryId);
             pstmt.setString(2, writer);
             pstmt.setString(3, title);
             pstmt.setString(4, content);
             pstmt.setInt(5, 0); // 기본 조회수 0
             pstmt.setString(6, boardPw);
             pstmt.setString(7, boardRePw);
-//            pstmt.setString(8, String.valueOf(createdAt));
-//            pstmt.setString(8, String.valueOf(modifiedAt));
+            pstmt.setString(8, createdAt);
+            pstmt.setString(8, modifiedAt);
 //            pstmt.setTimestamp(8, Timestamp.valueOf(createdAt));
 //            pstmt.setTimestamp(9, Timestamp.valueOf(modifiedAt));
 

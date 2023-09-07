@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,22 +20,26 @@
 
 <br/>
 
-    <%-- 현재 시간을 가져오는 함수
     <%!
         public LocalDateTime getCurrentLocalDateTime() {
             return LocalDateTime.now();
         }
+
+        public Timestamp getCurrentTimestamp() {
+            return Timestamp.valueOf(getCurrentLocalDateTime());
+        }
+
+        LocalDateTime currentLocalDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = LocalDateTime.now().format(formatter);
     %>
-    --%>
 
     <div class="container">
         <div class="row">
             <form method="post" action="boardWriteAction.jsp">
 
-                <%--
-                <input type="hidden" name="createdAt" value="<%= getCurrentLocalDateTime() %>">
-                <input type="hidden" name="modifiedAt" value="<%= getCurrentLocalDateTime() %>">
-                --%>
+                <input type="hidden" name="createdAt" value="<%= formattedDateTime %>">
+                <input type="hidden" name="modifiedAt" value="<%= formattedDateTime %>">
 
                 <input type="hidden" name="count" value="0">
 
