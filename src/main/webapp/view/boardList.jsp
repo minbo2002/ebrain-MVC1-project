@@ -60,7 +60,7 @@
 
 <br/><br/>
 <div id="homeDiv">
-    <input type="button" value="글쓰기" id="btnWrite">
+    <input type="button" value="등록" id="btnWrite">
 </div>
 
 

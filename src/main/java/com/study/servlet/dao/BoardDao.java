@@ -34,4 +34,11 @@ public class BoardDao {
         return session.selectOne("board.count", boardCount);
 
     }
+
+    public int createBoard(SqlSession session, Board board) {
+
+        return session.insert("board.create", board);
+
+    }
+
 }

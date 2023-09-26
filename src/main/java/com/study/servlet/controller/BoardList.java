@@ -17,7 +17,6 @@ import java.io.IOException;
 public class BoardList extends HttpServlet {
 
     private final BoardService boardService = new BoardServiceImpl();
-
     static final Logger log = LoggerFactory.getLogger(BoardList.class);
 
     public BoardList() {
