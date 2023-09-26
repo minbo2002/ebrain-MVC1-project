@@ -1,6 +1,6 @@
-package com.study.dto;
+package com.study.servlet.dto;
 
-import com.study.vo.Board;
+import com.study.servlet.vo.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

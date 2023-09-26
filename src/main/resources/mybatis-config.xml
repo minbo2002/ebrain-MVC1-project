@@ -6,7 +6,7 @@
     <properties resource="driver.properties"></properties>
 
     <typeAliases>
-        <typeAlias type="com.study.vo.Board" alias="BoardVO"/>
+        <typeAlias type="com.study.servlet.vo.Board" alias="BoardVO"/>
     </typeAliases>
 
     <!-- default : 연결 설정을 여러 개 생성하여 아이디로 구분하고 기본으로 연결할 설정 정보를 설정하는 속성 -->

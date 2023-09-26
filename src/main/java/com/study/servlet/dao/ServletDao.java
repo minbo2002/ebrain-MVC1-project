@@ -1,8 +1,8 @@
-package com.study.dao;
+package com.study.servlet.dao;
 
 import com.study.connection.ConnectionTest;
 import com.study.connection.JdbcUtil;
-import com.study.vo.Board;
+import com.study.servlet.vo.Board;
 
 import java.sql.*;
 import java.util.ArrayList;

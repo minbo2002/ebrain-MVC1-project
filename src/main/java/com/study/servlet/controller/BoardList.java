@@ -1,8 +1,8 @@
-package com.study.controller;
+package com.study.servlet.controller;
 
-import com.study.dto.BoardPage;
-import com.study.service.BoardService;
-import com.study.service.BoardServiceImpl;
+import com.study.servlet.dto.BoardPage;
+import com.study.servlet.service.BoardService;
+import com.study.servlet.service.BoardServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

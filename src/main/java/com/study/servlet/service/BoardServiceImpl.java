@@ -1,9 +1,9 @@
-package com.study.service;
+package com.study.servlet.service;
 
 import com.study.common.SessionTemplate;
-import com.study.dao.BoardDao;
-import com.study.dto.BoardPage;
-import com.study.vo.Board;
+import com.study.servlet.dao.BoardDao;
+import com.study.servlet.dto.BoardPage;
+import com.study.servlet.vo.Board;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
