@@ -26,39 +26,14 @@ public class BoardList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // pageNo : 보고싶은 페이지
+        int pageNo = 1;    // 보고싶은 페이지
+        int rowSize = 10;  // 한페이지당 게시판 수
+
         String strPageNo = request.getParameter("pageNo");
-        int pageNo = 1;
-//        if(strPageNo!=null) {
-//            pageNo = Integer.parseInt(strPageNo);
-//        }
-        if (strPageNo != null && !strPageNo.isEmpty()) {
-            try {
-                pageNo = Integer.parseInt(strPageNo);
-                if (pageNo <= 0) {
-                    pageNo = 1;
-                }
-
-            } catch (NumberFormatException e) {
-                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
-                log.error("pageNo를 정수로 변환할 수 없습니다. 기본값 1을 사용합니다.");
-            }
-        }
-
         String strRowSize = request.getParameter("rowSize");
-        int rowSize = 10;  // 기본값을 10으로 설정
-        if (strRowSize != null && !strRowSize.isEmpty()) {
-            try {
-                rowSize = Integer.parseInt(strRowSize);
-                if (rowSize <= 0) {
-                    rowSize = 10;
-                }
 
-            } catch (NumberFormatException e) {
-                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
-                log.error("rowSize를 정수로 변환할 수 없습니다. 기본값 10을 사용합니다.");
-            }
-        }
+        pageNo = getPageNo(strPageNo, pageNo);
+        rowSize = getRowSize(rowSize, strRowSize);
 
         // 조회조건
         String searchOption = request.getParameter("searchOption");
@@ -92,5 +67,31 @@ public class BoardList extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
+    }
+
+    private int getPageNo(String strPageNo, int pageNo) {
+        if (strPageNo != null && !strPageNo.isEmpty()) {
+            try {
+                pageNo = Integer.parseInt(strPageNo);
+
+            } catch (NumberFormatException e) {
+                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
+                log.error("pageNo를 정수로 변환할 수 없습니다. 기본값 1을 사용합니다.");
+            }
+        }
+        return pageNo;
+    }
+
+    private int getRowSize(int rowSize, String strRowSize) {
+        if (strRowSize != null && !strRowSize.isEmpty()) {
+            try {
+                rowSize = Integer.parseInt(strRowSize);
+
+            } catch (NumberFormatException e) {
+                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
+                log.error("rowSize를 정수로 변환할 수 없습니다. 기본값 10을 사용합니다.");
+            }
+        }
+        return rowSize;
     }
 }

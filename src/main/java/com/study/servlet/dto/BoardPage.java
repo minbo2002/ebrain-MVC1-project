@@ -1,27 +1,22 @@
 package com.study.servlet.dto;
 
-import com.study.servlet.vo.Board;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 import java.util.List;
 
 @Getter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 public class BoardPage {
 
     private int total;			 //전체게시물수
     private int currentPage;	 //현재 페이지(요청페이지)
-    private List<Board> list; //게시글목록정보(글번호,제목,작성자,조회수,최초작성일,마지막수정일,노출여부)
+    private List<BoardListDto> list;    //게시글목록정보(글번호,제목,작성자,조회수,최초작성일,마지막수정일,노출여부)
     private int totalPages;		 //총페이지수
     private int startPage;		 //시작페이지번호
     private int endPage;		 //끝페이지번호
 
-
-    public BoardPage(int total, int currentPage, int size, List<Board> list) {
+    public BoardPage(int total, int currentPage, int size, List<BoardListDto> list) {
 
         this.total = total;
         this.currentPage = currentPage;

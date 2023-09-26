@@ -114,7 +114,7 @@ public class ServletDao extends ConnectionTest {
 
         try {
             // String SQL = "SELECT * FROM board WHERE board_id < ? ORDER BY board_id DESC LIMIT 10";
-            String SQL = "SELECT a.board_id, b.category_name, a.writer, a.title, a.content, a.count, a.board_pw, a.board_repw, a.created_at, a.modified_at \n" +
+            String SQL = "SELECT a.board_id, b.category_id, a.writer, a.title, a.content, a.count, a.board_pw, a.board_repw, a.created_at, a.modified_at \n" +
                     "FROM board a JOIN category b ON a.category_id=b.category_id WHERE board_id < ? ORDER BY board_id DESC LIMIT 10";
 
             conn = ConnectionTest.getConnection();
@@ -125,7 +125,7 @@ public class ServletDao extends ConnectionTest {
             while (rs.next()) {
                 Board board = new Board();
                 board.setBoardId(rs.getLong("board_id"));
-                board.setCategoryName(rs.getString("category_name"));
+                board.setCategoryId(rs.getLong("category_id"));
                 board.setWriter(rs.getString("writer"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));

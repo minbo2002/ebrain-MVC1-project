@@ -10,15 +10,6 @@
 </h1>
 <br/>
 
-<%
-    ConnectionTest t = new ConnectionTest();
-    out.println(t.getConnection());
-%>
-
-<%--    <script type="text/javascript">--%>
-<%--        location.href = "/view/boardList.jsp";--%>
-<%--    </script>--%>
-
     <div>
         <ul>
 <%--            <li><a href="view/boardList.jsp">게시판 목록이동</a></li>--%>

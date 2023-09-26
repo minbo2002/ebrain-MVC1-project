@@ -24,8 +24,6 @@ tasks.withType(JavaCompile) {
 
 dependencies {
 
-    implementation 'servlets.com:cos:05Nov2002'
-    implementation 'cos:cos:05Nov2002'
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     //compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
 

@@ -88,21 +88,21 @@
 
         <%-- 게시글이 있는 경우 --%>
         <c:if test="${boardPage.hasBoards()}">
-            <c:forEach var="item" items="${boardPage.list}">
+            <c:forEach var="board" items="${boardPage.list}">
                 <tr>
-                    <td>${item.boardId}</td>
-                    <td>${item.categoryName}</td>
-                    <td>${item.writer}</td>
-                    <td><a href="">${item.title}</a></td>
-                    <td>${item.content}</td>
-                    <td>${item.count}</td>
+                    <td>${board.boardId}</td>
+                    <td>${board.category.categoryName}</td>
+                    <td>${board.writer}</td>
+                    <td><a href="">${board.title}</a></td>
+                    <td>${board.content}</td>
+                    <td>${board.count}</td>
                     <td>
-                        ${item.createdAt}
-<%--                        <fmt:formatDate pattern="yyyy.MM.dd. HH:mm:ss" value="${item.createdAt}" />--%>
+                        ${board.createdAt}
+<%--                        <fmt:formatDate pattern="yyyy.MM.dd'T'HH:mm:ss" value="${board.createdAt}" />--%>
                     </td>
                     <td>
-                        ${item.modifiedAt}
-<%--                        <fmt:formatDate pattern="yyyy.MM.dd. HH:mm:ss" value="${item.modifiedAt}" />--%>
+                        ${board.modifiedAt}
+<%--                        <fmt:formatDate pattern="yyyy.MM.dd'T'HH:mm:ss" value="${board.modifiedAt}" />--%>
                     </td>
                 </tr>
             </c:forEach>

@@ -1,5 +1,6 @@
 package com.study.servlet.dao;
 
+import com.study.servlet.dto.BoardListDto;
 import com.study.servlet.vo.Board;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ public class BoardDao {
 
     static final Logger log = LoggerFactory.getLogger(BoardDao.class);
 
-    public List<Board> boardList(SqlSession session, int startRow , int rowSize, String searchOption, String searchWord) {
+    public List<BoardListDto> boardList(SqlSession session, int startRow , int rowSize, String searchOption, String searchWord) {
 
         Map<String, Object> boardList = new HashMap<String, Object>();
         boardList.put("startRow", startRow);
@@ -35,10 +36,10 @@ public class BoardDao {
 
     }
 
-    public int createBoard(SqlSession session, Board board) {
-
-        return session.insert("board.create", board);
-
-    }
+//    public int createBoard(SqlSession session, Board board) {
+//
+//        return session.insert("board.create", board);
+//
+//    }
 
 }
