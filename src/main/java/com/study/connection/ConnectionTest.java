@@ -7,11 +7,11 @@ import java.sql.Statement;
 
 public class ConnectionTest {
 
-    static final String DB_URL = "jdbc:mysql://localhost:3306/ebrainsoft_study";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/ebrainstudy";
     static final String USER = "root";
     static final String PASS = "cos1234";
 
-    public Connection getConnection() throws Exception{
+    static public Connection getConnection() throws Exception{
 
         Connection conn = null;
         Statement stmt = null;

@@ -9,22 +9,20 @@
 <h1><%= "메인 화면" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
-
 
 <%
-
     ConnectionTest t = new ConnectionTest();
     out.println(t.getConnection());
-
 %>
+
+<%--    <script type="text/javascript">--%>
+<%--        location.href = "/view/boardList.jsp";--%>
+<%--    </script>--%>
 
     <div>
         <ul>
-            <li><a href="boardList.jsp">게시판 목록</a></li>
-            <li><a href="boardDetail.jsp">게시판 상세보기</a></li>
-            <li><a href="boardWrite.jsp">게시판 등록</a></li>
-            <li><a href="boardModify.jsp">게시판 수정</a></li>
+<%--            <li><a href="view/boardList.jsp">게시판 목록이동</a></li>--%>
+            <li><a href="<%=request.getContextPath()%>/api/board/list.do">게시판 목록이동</a></li>
         </ul>
     </div>
 

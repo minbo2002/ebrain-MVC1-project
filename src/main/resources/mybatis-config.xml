@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<configuration>
+
+    <properties resource="driver.properties"></properties>
+
+    <typeAliases>
+        <typeAlias type="com.study.vo.Board" alias="BoardVO"/>
+    </typeAliases>
+
+    <!-- default : 연결 설정을 여러 개 생성하여 아이디로 구분하고 기본으로 연결할 설정 정보를 설정하는 속성 -->
+    <environments default="ebsoft">
+        <!-- Database연결할 설정 정보 선언 => environment에 대한 이름을 ebsoft라고 부른다 -->
+        <environment id="ebsoft">
+            <!--   JDBC 커밋과 롤백을 직접 처리하기 위해 사용(수동 commit) -->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--   쿼리문을 작성할 매퍼 경로  -->
+    <mappers>
+        <mapper resource="/mappers/board-mapper.xml"/>
+    </mappers>
+
+</configuration>

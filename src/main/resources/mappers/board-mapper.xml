@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+    <select id="list" resultType="BoardVO">
+        <![CDATA[
+            SELECT a.board_id AS boardId, b.category_name AS categoryName, a.writer, a.title, a.content,
+                   a.count, a.board_pw, a.board_repw, a.created_at AS createdAt, a.modified_at AS modifiedAt
+            FROM board a left join category b
+            ON a.category_id=b.category_id
+        ]]>
+        <choose>
+            <when test="searchOption == ''">
+                WHERE b.category_name LIKE  CONCAT('%',#{searchWord}, '%') OR a.writer LIKE  CONCAT('%',#{searchWord}, '%')
+                OR a.title LIKE  CONCAT('%',#{searchWord}, '%') OR a.content LIKE  CONCAT('%',#{searchWord}, '%')
+            </when>
+            <when test="searchOption == 'category'">
+                WHERE b.category_name LIKE CONCAT('%',#{searchWord}, '%')
+            </when>
+            <when test="searchOption == 'title'">
+                WHERE a.title LIKE CONCAT('%',#{searchWord}, '%')
+            </when>
+            <when test="searchOption == 'content'">
+                WHERE a.content LIKE CONCAT('%',#{searchWord}, '%')
+            </when>
+        </choose>
+        <![CDATA[
+            ORDER BY a.board_id DESC LIMIT #{startRow},#{rowSize}
+        ]]>
+    </select>
+
+    <select id="count" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) cnt
+            FROM board a left join category b
+            ON a.category_id=b.category_id
+        ]]>
+        <choose>
+            <when test="searchOption == ''">
+                WHERE b.category_name LIKE  CONCAT('%',#{searchWord}, '%') OR a.writer LIKE  CONCAT('%',#{searchWord}, '%')
+                OR a.title LIKE  CONCAT('%',#{searchWord}, '%') OR a.content LIKE  CONCAT('%',#{searchWord}, '%')
+            </when>
+            <when test="searchOption == 'category'">
+                WHERE b.category_name LIKE CONCAT('%',#{searchWord}, '%')
+            </when>
+            <when test="searchOption == 'title'">
+                WHERE a.title LIKE CONCAT('%',#{searchWord}, '%')
+            </when>
+            <when test="searchOption == 'content'">
+                WHERE a.content LIKE CONCAT('%',#{searchWord}, '%')
+            </when>
+        </choose>
+    </select>
+
+</mapper>
