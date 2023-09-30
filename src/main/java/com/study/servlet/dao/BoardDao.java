@@ -1,7 +1,6 @@
 package com.study.servlet.dao;
 
-import com.study.servlet.dto.BoardListDto;
-import com.study.servlet.vo.Board;
+import com.study.servlet.dto.response.BoardListDto;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

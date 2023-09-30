@@ -2,8 +2,8 @@ package com.study.servlet.service;
 
 import com.study.common.SessionTemplate;
 import com.study.servlet.dao.BoardDao;
-import com.study.servlet.dto.BoardListDto;
-import com.study.servlet.dto.BoardPage;
+import com.study.servlet.dto.response.BoardListDto;
+import com.study.servlet.dto.response.BoardPage;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +27,9 @@ public class BoardServiceImpl implements BoardService {
 
             int boardCount = boardDao.boardCount(session, searchOption, searchWord);
             List<BoardListDto> list = boardDao.boardList(session, (pageNo - 1) * rowSize, rowSize, searchOption, searchWord);
+            log.info("게시판 개수 : {}", boardCount);
+            log.info("게시판 리스트 : {}", list);
+
             boardPage = new BoardPage(boardCount, pageNo, rowSize, list);
 
         }finally {

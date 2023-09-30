@@ -8,8 +8,8 @@
     <typeAliases>
         <typeAlias type="com.study.servlet.vo.Board" alias="BoardVO"/>
         <typeAlias type="com.study.servlet.vo.BoardFile" alias="BoardFileVO"/>
-        <typeAlias type="com.study.servlet.dto.BoardDto" alias="BoardDto"/>
-        <typeAlias type="com.study.servlet.dto.BoardListDto" alias="BoardListDto"/>
+        <typeAlias type="com.study.servlet.dto.request.BoardDto" alias="BoardDto"/>
+        <typeAlias type="com.study.servlet.dto.response.BoardListDto" alias="BoardListDto"/>
     </typeAliases>
 
     <!-- default : 연결 설정을 여러 개 생성하여 아이디로 구분하고 기본으로 연결할 설정 정보를 설정하는 속성 -->

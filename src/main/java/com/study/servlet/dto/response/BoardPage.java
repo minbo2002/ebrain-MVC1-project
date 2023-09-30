@@ -1,6 +1,8 @@
-package com.study.servlet.dto;
+package com.study.servlet.dto.response;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 

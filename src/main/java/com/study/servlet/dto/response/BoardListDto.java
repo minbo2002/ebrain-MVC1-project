@@ -1,4 +1,4 @@
-package com.study.servlet.dto;
+package com.study.servlet.dto.response;
 
 import com.study.servlet.vo.Category;
 import lombok.Builder;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class BoardListDto {
 
     private Long boardId;
-    private Category category;
+    private String categoryName;
     private String writer;
     private String title;
     private String content;
@@ -25,10 +25,10 @@ public class BoardListDto {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public BoardListDto(Long boardId, Category category, String writer, String title, String content, int count,
+    public BoardListDto(Long boardId, String categoryName, String writer, String title, String content, int count,
                         String boardPw, String boardRePw, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.boardId = boardId;
-        this.category = category;
+        this.categoryName = categoryName;
         this.writer = writer;
         this.title = title;
         this.content = content;

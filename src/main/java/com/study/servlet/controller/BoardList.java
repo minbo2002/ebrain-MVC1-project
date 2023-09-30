@@ -1,6 +1,6 @@
 package com.study.servlet.controller;
 
-import com.study.servlet.dto.BoardPage;
+import com.study.servlet.dto.response.BoardPage;
 import com.study.servlet.service.BoardService;
 import com.study.servlet.service.BoardServiceImpl;
 import org.slf4j.Logger;

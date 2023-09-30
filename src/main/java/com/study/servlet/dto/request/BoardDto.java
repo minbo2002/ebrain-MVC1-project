@@ -1,4 +1,4 @@
-package com.study.servlet.dto;
+package com.study.servlet.dto.request;
 
 import com.study.servlet.vo.BoardFile;
 import lombok.*;

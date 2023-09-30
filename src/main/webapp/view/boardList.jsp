@@ -91,7 +91,7 @@
             <c:forEach var="board" items="${boardPage.list}">
                 <tr>
                     <td>${board.boardId}</td>
-                    <td>${board.category.categoryName}</td>
+                    <td>${board.categoryName}</td>
                     <td>${board.writer}</td>
                     <td><a href="">${board.title}</a></td>
                     <td>${board.content}</td>

@@ -1,6 +1,6 @@
 package com.study.servlet.service;
 
-import com.study.servlet.dto.BoardPage;
+import com.study.servlet.dto.response.BoardPage;
 
 public interface BoardService {
 
