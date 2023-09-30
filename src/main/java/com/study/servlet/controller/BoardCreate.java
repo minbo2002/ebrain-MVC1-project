@@ -2,15 +2,13 @@ package com.study.servlet.controller;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.study.servlet.dto.BoardDto;
-import com.study.servlet.dto.BoardPage;
+import com.study.servlet.dto.request.BoardDto;
+import com.study.servlet.dto.response.BoardPage;
 import com.study.servlet.service.BoardService;
 import com.study.servlet.service.BoardServiceImpl;
-import com.study.servlet.vo.Board;
 import com.study.servlet.vo.BoardFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +52,7 @@ public class BoardCreate extends HttpServlet {
         int rowSize = 10;  // 기본값을 10으로 설정
         String strPageNo = multipartRequest.getParameter("pageNo");
         String strRowSize = multipartRequest.getParameter("rowSize");
-        String category = multipartRequest.getParameter("category");
+        Long categoryId = multipartRequest.getParameter("categoryId");
         String writer = multipartRequest.getParameter("writer");
         String title = multipartRequest.getParameter("title");
         String content = multipartRequest.getParameter("content");
@@ -62,7 +60,7 @@ public class BoardCreate extends HttpServlet {
         String boardRePw = multipartRequest.getParameter("boardRePw");
         String fileOriName = multipartRequest.getOriginalFileName("filename");   // finename : 사용자가 올린 파일 이름
         String fileName = multipartRequest.getFilesystemName("filename"); // fileRealName : DB에 저장되는 이름 (중복방지)
-        
+
         pageNo = getPageNo(strPageNo, pageNo);
         rowSize = getRowSize(rowSize, strRowSize);
 
@@ -72,7 +70,7 @@ public class BoardCreate extends HttpServlet {
         Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
         BoardDto boardDto = BoardDto.builder()
-                                .categoryName(category)
+                                .categoryId(categoryId)
                                 .writer(writer)
                                 .title(title)
                                 .content(content)

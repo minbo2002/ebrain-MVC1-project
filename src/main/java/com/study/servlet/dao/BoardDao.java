@@ -1,6 +1,7 @@
 package com.study.servlet.dao;
 
 import com.study.servlet.dto.response.BoardListDto;
+import com.study.servlet.vo.Board;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +36,10 @@ public class BoardDao {
 
     }
 
-//    public int createBoard(SqlSession session, Board board) {
-//
-//        return session.insert("board.create", board);
-//
-//    }
+    public int createBoard(SqlSession session, Board board) {
+
+        return session.insert("board.create", board);
+
+    }
 
 }

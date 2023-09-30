@@ -10,7 +10,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class BoardDto {
 
-    private String categoryName;
+    private Long categoryId;
     private String writer;
     private String title;
     private String content;
@@ -19,8 +19,8 @@ public class BoardDto {
     private BoardFile boardFile;
 
     @Builder
-    public BoardDto(String categoryName, String writer, String title, String content, String boardPw, String boardRePw, BoardFile boardFile) {
-        this.categoryName = categoryName;
+    public BoardDto(Long categoryId, String writer, String title, String content, String boardPw, String boardRePw, BoardFile boardFile) {
+        this.categoryId = categoryId;
         this.writer = writer;
         this.title = title;
         this.content = content;
@@ -30,24 +30,23 @@ public class BoardDto {
     }
 
     // 유효성검사 - 필수입력체크
-
     public void validate(Map<String, Boolean> errors) {
-        if( categoryName==null || categoryName.isEmpty() ) {
-            errors.put("categoryName", Boolean.TRUE);
+        if( categoryId==null) {
+            errors.put("categoryId", Boolean.TRUE);
         }
-        if( writer==null || writer.isEmpty()) {
+        if( writer==null || writer.isEmpty() || writer.length() < 3 || writer.length() >= 5 ) {
             errors.put("writer", Boolean.TRUE);
         }
-        if( title==null || title.isEmpty()) {
+        if(title==null || title.isEmpty() || title.length() < 4 || title.length() >= 100) {
             errors.put("title", Boolean.TRUE);
         }
-        if( content==null || content.isEmpty()) {
+        if( content==null || content.isEmpty() || content.length() < 4 || content.length() >= 200) {
             errors.put("content", Boolean.TRUE);
         }
-        if( boardPw==null || boardPw.isEmpty()) {
+        if( boardPw==null || boardPw.isEmpty() || boardPw.length() < 4 || boardPw.length() >= 16) {
             errors.put("boardPw", Boolean.TRUE);
         }
-        if( boardRePw==null || boardRePw.isEmpty()) {
+        if( boardRePw==null || boardRePw.isEmpty() || boardRePw.length() < 4 || boardRePw.length() >= 16) {
             errors.put("boardRePw", Boolean.TRUE);
         }
     }

@@ -24,9 +24,9 @@
             $("#btnMain").click(function() {
                 location.href="<%=request.getContextPath()%>/index.jsp";
             });
-            <%--$("#btnWrite").click(function() {--%>
-            <%--    location.href="<%=request.getContextPath()%>/createBoard.do?rowSize=${rowSize}";--%>
-            <%--});--%>
+            $("#btnWrite").click(function() {
+                location.href="<%=request.getContextPath()%>/api/board/createPage.do?rowSize=${rowSize}";
+            });
         });
     </script>
 </head>
@@ -97,12 +97,14 @@
                     <td>${board.content}</td>
                     <td>${board.count}</td>
                     <td>
-                        ${board.createdAt}
-<%--                        <fmt:formatDate pattern="yyyy.MM.dd'T'HH:mm:ss" value="${board.createdAt}" />--%>
+                        <fmt:parseDate value="${board.createdAt}"
+                                       pattern="yyyy-MM-dd'T'HH:mm" var="createdAt" type="both" />
+                        <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${createdAt}" />
                     </td>
                     <td>
-                        ${board.modifiedAt}
-<%--                        <fmt:formatDate pattern="yyyy.MM.dd'T'HH:mm:ss" value="${board.modifiedAt}" />--%>
+                        <fmt:parseDate value="${board.modifiedAt}"
+                                       pattern="yyyy-MM-dd'T'HH:mm" var="modifiedAt" type="both" />
+                        <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${modifiedAt}" />
                     </td>
                 </tr>
             </c:forEach>
