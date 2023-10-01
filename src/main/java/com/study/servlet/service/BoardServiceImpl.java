@@ -70,6 +70,9 @@ public class BoardServiceImpl implements BoardService {
             int createBoardCount = boardDao.createBoard(session, board);
             log.info("생성된 게시판 개수 : {}", createBoardCount);
 
+            // 생성된 게시판의 id를 가져옴
+            Long boardId = board.getBoardId();
+
             // 저장할 이미지의 이름이 있다면
             if(boardDto.getBoardFile().getFileOriName()!=null) {
 
@@ -77,11 +80,10 @@ public class BoardServiceImpl implements BoardService {
                 BoardFile boardFile = BoardFile.builder()
                         .fileOriName(boardDto.getBoardFile().getFileOriName())
                         .fileName(boardDto.getBoardFile().getFileName())
-                        /* .boardId()
-                            todo Mybatis에서 insert는 반환타입이 int이다. 따라서 위에서 새로 생성한 게시판의 boardId를 가져오려면 어떻게 해야할까?? */
+                        .boardId(boardId)
                         .build();
 
-                // 파일DB에 저장
+                // 파일 DB에 저장
                 fileDAO.createFile(session, boardFile);
             }
 
@@ -89,7 +91,9 @@ public class BoardServiceImpl implements BoardService {
 
         } catch (Exception e) {
             e.printStackTrace();
-            session.rollback();
+            if(session!=null) {
+                session.rollback();
+            }
 
         }finally {
             if(session!=null) {

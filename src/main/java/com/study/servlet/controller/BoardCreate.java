@@ -52,7 +52,18 @@ public class BoardCreate extends HttpServlet {
         int rowSize = 10;  // 기본값을 10으로 설정
         String strPageNo = multipartRequest.getParameter("pageNo");
         String strRowSize = multipartRequest.getParameter("rowSize");
-        Long categoryId = multipartRequest.getParameter("categoryId");
+
+        String strCategoryId = multipartRequest.getParameter("categoryId");
+        Long categoryId = null;
+        if (strCategoryId != null && !strCategoryId.isEmpty()) {
+            try {
+                categoryId = Long.parseLong(strCategoryId);
+            } catch (NumberFormatException e) {
+                // strCategoryId Long으로 변환할 수 없는 경우 예외 처리
+                // 이때 categoryId는 여전히 null로 설정됨
+            }
+        }
+
         String writer = multipartRequest.getParameter("writer");
         String title = multipartRequest.getParameter("title");
         String content = multipartRequest.getParameter("content");
