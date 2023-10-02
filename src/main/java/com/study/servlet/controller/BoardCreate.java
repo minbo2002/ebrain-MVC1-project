@@ -3,7 +3,6 @@ package com.study.servlet.controller;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.study.servlet.dto.request.BoardDto;
-import com.study.servlet.dto.response.BoardPage;
 import com.study.servlet.service.BoardService;
 import com.study.servlet.service.BoardServiceImpl;
 import com.study.servlet.vo.BoardFile;
@@ -48,10 +47,10 @@ public class BoardCreate extends HttpServlet {
 
         MultipartRequest multipartRequest = new MultipartRequest(request, uploadPath, maxSize, encoding, new DefaultFileRenamePolicy());
 
-        int pageNo = 1;
-        int rowSize = 10;  // 기본값을 10으로 설정
-        String strPageNo = multipartRequest.getParameter("pageNo");
-        String strRowSize = multipartRequest.getParameter("rowSize");
+//        int pageNo = 1;
+//        int rowSize = 10;  // 기본값을 10으로 설정
+//        String strPageNo = multipartRequest.getParameter("pageNo");
+//        String strRowSize = multipartRequest.getParameter("rowSize");
 
         String strCategoryId = multipartRequest.getParameter("categoryId");
         Long categoryId = null;
@@ -72,10 +71,10 @@ public class BoardCreate extends HttpServlet {
         String fileOriName = multipartRequest.getOriginalFileName("filename");   // finename : 사용자가 올린 파일 이름
         String fileName = multipartRequest.getFilesystemName("filename"); // fileRealName : DB에 저장되는 이름 (중복방지)
 
-        pageNo = getPageNo(strPageNo, pageNo);
-        rowSize = getRowSize(rowSize, strRowSize);
-
-        BoardPage boardPage = boardService.getBoard( pageNo, rowSize, "", "");
+//        pageNo = getPageNo(strPageNo, pageNo);
+//        rowSize = getRowSize(rowSize, strRowSize);
+//
+//        BoardPage boardPage = boardService.getBoard( pageNo, rowSize, "", "");
 
         //유효성검사를 위한 errors 객체 생성
         Map<String, Boolean> errors = new HashMap<String, Boolean>();
@@ -97,7 +96,7 @@ public class BoardCreate extends HttpServlet {
         request.setAttribute("errors", errors);
 
         if(!errors.isEmpty()) {
-            request.setAttribute("rowSize", rowSize);
+//            request.setAttribute("rowSize", rowSize);
             request.getRequestDispatcher("/view/createBoardForm.jsp").forward(request, response);
         }
 
@@ -106,38 +105,38 @@ public class BoardCreate extends HttpServlet {
         log.info("생성된 게시판 개수 = {}", cnt);
 
         // 3. Model
-        request.setAttribute("boardPage", boardPage);
-        request.setAttribute("rowSize", rowSize);
-        request.setAttribute("uploadPath", uploadPath);
+//        request.setAttribute("boardPage", boardPage);
+//        request.setAttribute("rowSize", rowSize);
+//        request.setAttribute("uploadPath", uploadPath);
 
         // 4. View
         response.sendRedirect(request.getContextPath()+"/api/board/list.do");
     }
 
 
-    private int getPageNo(String strPageNo, int pageNo) {
-        if (strPageNo != null && !strPageNo.isEmpty()) {
-            try {
-                pageNo = Integer.parseInt(strPageNo);
-
-            } catch (NumberFormatException e) {
-                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
-                log.error("pageNo를 정수로 변환할 수 없습니다. 기본값 1을 사용합니다.");
-            }
-        }
-        return pageNo;
-    }
-
-    private int getRowSize(int rowSize, String strRowSize) {
-        if (strRowSize != null && !strRowSize.isEmpty()) {
-            try {
-                rowSize = Integer.parseInt(strRowSize);
-
-            } catch (NumberFormatException e) {
-                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
-                log.error("rowSize를 정수로 변환할 수 없습니다. 기본값 10을 사용합니다.");
-            }
-        }
-        return rowSize;
-    }
+//    private int getPageNo(String strPageNo, int pageNo) {
+//        if (strPageNo != null && !strPageNo.isEmpty()) {
+//            try {
+//                pageNo = Integer.parseInt(strPageNo);
+//
+//            } catch (NumberFormatException e) {
+//                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
+//                log.error("pageNo를 정수로 변환할 수 없습니다. 기본값 1을 사용합니다.");
+//            }
+//        }
+//        return pageNo;
+//    }
+//
+//    private int getRowSize(int rowSize, String strRowSize) {
+//        if (strRowSize != null && !strRowSize.isEmpty()) {
+//            try {
+//                rowSize = Integer.parseInt(strRowSize);
+//
+//            } catch (NumberFormatException e) {
+//                // rowSize가 정수로 변환할 수 없는 경우에 대한 처리
+//                log.error("rowSize를 정수로 변환할 수 없습니다. 기본값 10을 사용합니다.");
+//            }
+//        }
+//        return rowSize;
+//    }
 }

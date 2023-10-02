@@ -24,36 +24,37 @@ tasks.withType(JavaCompile) {
 
 dependencies {
 
-    implementation 'cos:cos:05Nov2002'
-    implementation 'servlets.com:cos:05Nov2002'
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     //compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
 
+    implementation 'cos:cos:05Nov2002'
+    implementation 'servlets.com:cos:05Nov2002'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
 
-    implementation 'org.projectlombok:lombok:1.18.26'
+    implementation 'org.projectlombok:lombok:1.18.20'
 
     // test에서 lombok 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     // P6Spy 쿼리 파라미터 로그 외부라이브러리 사용
-    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
 
     //jstl
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
 
     //mybatis추가
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
 //    implementation 'org.mybatis:mybatis:3.5.11'
 
     // 파일 업로드
-    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
-    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.3'
 
-    implementation 'ch.qos.logback:logback-classic:1.4.7'
-    implementation 'org.slf4j:slf4j-api:2.0.5'
+    implementation 'ch.qos.logback:logback-classic:1.4.1'
+    implementation 'org.slf4j:slf4j-api:2.0.3'
 //    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
 }
 

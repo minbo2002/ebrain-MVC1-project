@@ -1,16 +1,13 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--<mapper namespace="file">-->
+<mapper namespace="file">
 
-<!--    <insert id="create" useGeneratedKeys="true" keyProperty="boardId" parameterType="BoardFileVO">-->
-<!--        <selectKey keyProperty="boardId" resultType="int" order="BEFORE">-->
-<!--            SELECT so_shipout_seq_12('SOUT') FROM DUAL-->
-<!--        </selectKey>-->
-<!--        <![CDATA[-->
-<!--        insert into file (board_id, file_ori_name, file_name)-->
-<!--        values (#{boardId} #{fileOriName}, #{fileName})-->
-<!--        ]]>-->
-<!--    </insert>-->
+    <insert id="create" parameterType="BoardFileVO">
+        <![CDATA[
+        insert into file (board_id, file_ori_name, file_name)
+        values (#{boardId} #{fileOriName}, #{fileName})
+        ]]>
+    </insert>
 
-<!--</mapper>-->
+</mapper>

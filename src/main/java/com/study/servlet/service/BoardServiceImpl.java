@@ -23,12 +23,15 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardPage getBoard(int pageNo, int rowSize, String searchOption, String searchWord) {
+        log.info("getBoard() 실행");
 
         SqlSession session = null;
         BoardPage boardPage;
 
         try {
+
             session = SessionTemplate.getSession();
+            log.info("session : {}", session);
 
             int boardCount = boardDao.boardCount(session, searchOption, searchWord);
             List<BoardListDto> boardList = boardDao.boardList(session, (pageNo - 1) * rowSize, rowSize, searchOption, searchWord);
