@@ -36,9 +36,12 @@ public class BoardCreate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String uploadPath = this.getClass().getResource("").getPath();
-        uploadPath = uploadPath.substring(1, uploadPath.indexOf(".metadata")) +
-                ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\project\\uploadImage";
+        // 현재 프로젝트의 루트디렉토리 가져오기
+        String uploadPath = System.getProperty("user.dir") + "/uploadImage";
+
+//        String uploadPath = this.getClass().getResource("").getPath();
+//        uploadPath = uploadPath.substring(1, uploadPath.indexOf(".metadata")) +
+//                ".metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\project\\uploadImage";
 
         log.info("uploadPath = {}", uploadPath);  // 저장경로에 이미지 저장됨
 

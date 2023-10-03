@@ -55,9 +55,10 @@
 
     <insert id="create" parameterType="BoardDto">
         <![CDATA[
-        insert into board (a.board_id AS boardId, b.category_id AS categoryId, a.writer, a.title, a.content,
+        insert into board (b.category_id AS categoryId, a.writer, a.title, a.content,
                            a.count, a.board_pw, a.board_repw, a.created_at AS createdAt, a.modified_at AS modifiedAt)
-        values (#{boardId} #{fileOriName}, #{fileName})
+        values (#{categoryId}, #{writer}, #{title}, #{content},
+                #{count} #{boardPw}, #{boardRePw}, #{createdAt}, #{modifiedAt})
         ]]>
     </insert>
 

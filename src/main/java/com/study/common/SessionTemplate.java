@@ -15,6 +15,7 @@ import java.io.InputStream;
 public class SessionTemplate {
 
     public static SqlSession getSession() {
+        log.info("SessionTemplate 클래스의 getSession() 실행");
 
         SqlSession session=null;
 
